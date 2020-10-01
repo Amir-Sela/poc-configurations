@@ -1,0 +1,6 @@
+type Query {
+  comments: [Comment]
+}
+
+
+

@@ -1,15 +1,18 @@
 const {join} = require('path');
 const {loadSchemaSync} = require('@graphql-tools/load');
-const {UrlLoader} =require('@graphql-tools/url-loader');
+const { GraphQLFileLoader } = require('@graphql-tools/graphql-file-loader');
 const {addResolversToSchema} =require( '@graphql-tools/schema');
 const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
-var router = express.Router();
+const {fetchSchemaFiles} = require('./utils.js')
+
+let files = fetchSchemaFiles(join(__dirname,'schema'));
+
 
 // Load schema from the file
-const schema = loadSchemaSync("http://localhost:8888", {
+const schema = loadSchemaSync(files, {
     loaders: [
-        new UrlLoader(),
+        new GraphQLFileLoader(),
     ]
 });
 
@@ -22,14 +25,7 @@ var schemaWithResolvers = addResolversToSchema({
     schema,
     resolvers,
 });
-
-
-
 const app = express();
-
-app.use("/schema",router);
-
-
 app.use(
     graphqlHTTP({
         schema: schemaWithResolvers,
