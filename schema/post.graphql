@@ -1,6 +1,0 @@
-type Post {
-  comments: [Comment]
-  id: ID!
-  text: String!
-  tags: [String]
-}

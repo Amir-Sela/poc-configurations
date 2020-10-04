@@ -4,10 +4,10 @@ const {GraphQLFileLoader} = require('@graphql-tools/graphql-file-loader');
 const {addResolversToSchema} = require('@graphql-tools/schema');
 const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
-const {fetchSchemaFiles, fetchResolvers} = require('./utils/loader.js')
+const {createSchemaWithMetadataFields, fetchResolvers} = require('./utils/loader.js')
 
 // Load schema from the file
-const schema = loadSchemaSync(fetchSchemaFiles(join(__dirname, 'schema')), {
+const schema = loadSchemaSync(createSchemaWithMetadataFields(join(__dirname, 'schema')), {
     loaders: [
         new GraphQLFileLoader(),
     ]

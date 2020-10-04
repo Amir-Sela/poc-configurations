@@ -1,0 +1,7 @@
+type Query{
+    mock:Void
+}
+type Mutation
+{
+    mock:Void
+}
