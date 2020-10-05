@@ -1,6 +1,0 @@
-type Comment {
-    text: String!
-}
-extend type Query{
-    findComment(entityID:  String!):Post
-}

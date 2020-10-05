@@ -1,0 +1,19 @@
+type Post {
+    comments: [Comment]
+    text: String!
+    tags: [String]
+}
+
+extend type Post implements MetaData
+{
+    updatedDate:Long!
+    entityID:String!
+    createdDate:Long!
+}
+
+extend type Query{
+    findPost(id:  String!):Post
+}
+extend type Mutation{
+    createPost(text:String!,tags:[String!]!):Post!
+}

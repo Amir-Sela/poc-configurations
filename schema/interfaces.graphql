@@ -1,0 +1,5 @@
+interface MetaData{
+    entityID:String!#id
+    createdDate:Long!#timestamp
+    updatedDate:Long!#timestamp
+}

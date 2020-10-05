@@ -1,0 +1,17 @@
+type Comment {
+    text: String!
+}
+
+extend type Comment implements MetaData
+{
+    updatedDate:Long!
+    entityID:String!
+    createdDate:Long!
+}
+
+extend type Query{
+    findComment(id:  String!):Comment!
+}
+extend type Mutation {
+    createComment(text:String!,authorID:String!,postID:String!):Comment!
+}

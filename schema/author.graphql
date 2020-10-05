@@ -1,0 +1,22 @@
+input AuthorCreation {
+    name: String!
+}
+
+type Author{
+    name:String!
+    posts:[Post]!
+}
+extend type Author implements MetaData
+{
+    updatedDate:Long!
+    entityID:String!
+    createdDate:Long!
+}
+
+extend type Query{
+    findAuthor(name:  String!):Author
+}
+
+extend type Mutation {
+    createAuthor(name:String!):Author
+}
