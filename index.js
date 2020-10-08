@@ -18,6 +18,12 @@ const repositories = require('./repository/index')
 // });
 
 request('http://localhost:3000/schema', function (error, response, body) {
+    if(error)
+    {
+        console.log(error)
+        process.exit(1)
+
+    }
 
     const schema = loadSchemaSync(body, {   // load from endpoint
         loaders: [

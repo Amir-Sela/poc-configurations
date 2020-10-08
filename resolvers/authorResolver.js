@@ -13,7 +13,7 @@ module.exports = (authorRepository) => {
         },
         Author:{
             name(obj,args,context,info){
-                return "lol"
+                return "modified" //we can get information based on args and do some operations..
             }
         }
     }
